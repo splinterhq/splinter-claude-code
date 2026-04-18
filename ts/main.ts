@@ -1,11 +1,19 @@
+/**
+ * A Star Trek TOS - Inspired LCARS Signal Bus Display For Splinter
+ * Copyright (C) 2026 Tim Post
+ * Suitable for debugging and exploratory use and inspired by the ST TOS
+ * register displays on the Enterprise Science, Communications and Engineering
+ * duty stations. Not meant to be a faithful reproduction, just a useful tool.
+ * @license Apache 2
+ * 
+ */
 import { Hono } from "https://deno.land/x/hono@v4.1.0/mod.ts";
 import { streamSSE } from "https://deno.land/x/hono@v4.1.0/helper/streaming/index.ts";
 import { Splinter } from "/usr/local/share/splinter/splinter.ts";
 
 const app = new Hono();
 // Where the stores can be found
-const SPLINTER_BUS_FILEDIR = "${HOME}";
-const BUS_NAME = SPLINTER_BUS_FILEDIR + Deno.env.get("SPLINTER_CONN_FN");
+const BUS_NAME = Deno.env.get("SPLINTER_CONN_FN");
 
 // Flash effect duration in milliseconds
 const FLASH_DURATION_MS = 250;
@@ -147,4 +155,4 @@ const indexHtml = `
 </html>
 `;
 
-Deno.serve({ port: Deno.pid }, app.fetch);
+Deno.serve({ port: 8787 }, app.fetch);
