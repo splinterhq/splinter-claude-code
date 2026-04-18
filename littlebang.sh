@@ -27,5 +27,9 @@ echo "│"
 echo "│  Start the demo by telling Claude Code:"
 echo "│  \"Execute the spec in spec.md\""
 echo "│"
+echo "| Press CTRL-C To End The Demo"
 echo "└─────────────────────────────────────────────────────────┘"
 echo ""
+
+# Keep alive for ctrl-c
+while true; do sleep 60; done
