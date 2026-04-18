@@ -45,6 +45,11 @@ Bad: `attempt1`, `task3`, `fix`.
 - When you discover something surprising about the environment
 - When you make a decision that isn't obvious from the spec
 
+Journal intent **before** attempting something non-trivial.
+Journal outcome **immediately after** it completes — not at the end of
+the task. Each journal entry should be written while the result is still
+the current action.
+
 **When not to journal:**
 - Routine file reads and writes already covered by spl-signal
 - Steps that succeeded exactly as expected with no surprises
@@ -70,4 +75,3 @@ Apply the most specific label that fits:
 scripts/spl-journal "deno-ffi-bigint-overflow.1" "setLabel requires BigInt 
 not Number for mask argument, Deno throws on Number silently" 0x20
 ```
-S
