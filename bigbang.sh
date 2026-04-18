@@ -60,6 +60,17 @@ else
     echo "(Could not auto-open browser — visit $LCARS_URL manually)"
 fi
 
+sleep 2
+
+echo "Exercising the bus (watch the display) ..."
+
+# this makes a nice shimmer across the signal groups
+for i in {1..63}
+do
+	idx=$((i-1))
+	splinterpctl --use "${BUS_FILE}" bump lcars_${i} > /dev/null 2>&1
+done
+
 echo ""
 echo "┌─────────────────────────────────────────────────────────┐"
 echo "│  SPLINTER BUS : $BUS_FILE"
