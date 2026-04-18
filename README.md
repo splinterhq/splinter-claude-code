@@ -1,35 +1,48 @@
-# Claude + Splinter Signal Demo
+# Claude Code + Splinter Signal Demo
 
-This is a companion repo to the following Dev.to article:
+Companion repo to: [article URL]
 
+[Splinter][1] is a shared-memory substrate for AI workflows. This demo shows
+how agents can use it as a governance and coordination bus — signaling
+activity in real time, journaling decisions, and lighting up a Star Trek
+TOS-inspired LCARS display as they work.
 
-This demo shows how Splinter can be used by AI agents in 
-many ways, including through its non-interactive command line
-utilties, `splinterctl` and `splinterpctl` for in-memory and
-persistent stores respecitvely.
+No daemons, no sockets, no middleware. Just shared memory and shell wrappers
+thin enough that any agent following instructions can use them.
 
-By providing a wrapper so the model isn't exposed to build
-identifiers and command line semantics, we make it very easy 
-for agents to signal the user, or each other.
+## What You'll See
 
-# How To Run
+A Claude Code agent executes a spec, signals its activity at each step via
+`scripts/spl-signal`, journals decisions via `scripts/spl-journal`, and a
+Deno/Hono SSE server drives a 63-segment LCARS display that pulses in real
+time as signal groups fire.
 
-You will need to install Splinter first:
+After the run, the persistent bus file contains everything the agent wrote —
+inspectable with `splinterpctl`.
 
-https://github.com/splinterhq/libsplinter
+## Requirements
 
-After that run ./bigbang.sh and follow the prompts.
+- Splinter: https://github.com/splinterhq/libsplinter
+- Deno (for the LCARS display)
+- Claude Code (or any agent that can execute shell commands and read CLAUDE.md)
 
-# What This Demo Did Not Touch on
+## How To Run
 
- - Embedding what the agents journal with splinference so it can be
-   searched by them using `splinterctl search` semantically. You can
-   do this by running splinference, but another article in this series
-   will cover it in-depth.
+```bash
+./bigbang.sh        # with LCARS display
+./littlebang.sh     # without (no Deno required)
+```
 
- - A million ways it probably could have been more captivating for (thing), 
-   and that's because I'm just getting started.
+Then tell Claude Code: `Execute the spec in spec.md`
 
-# Contact
- 
+## What This Demo Doesn't Cover
+
+Semantic search over agent journals via `splinference` — the embedded
+sidecar that runs Nomic Text 1.5 against everything agents write. That's
+the focus of the next article in this series.
+
+## Contact
+
 Tim Post <timthepost@protonmail.com>
+
+  [1]: https://splinterhq.github.io
