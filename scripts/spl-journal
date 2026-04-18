@@ -30,7 +30,7 @@ SPL_ARGS=(--use "$STORE" --rc-file config/agent.rc)
 # If this is a base key (no .N suffix), initialize the tandem order structure
 if [[ "$KEY" != *.* ]]; then
     splinterpctl "${SPL_ARGS[@]}" set "$KEY" "$VALUE" || die "failed to set key"
-    splinterpctl "${SPL_ARGS[@]}" orders "$KEY" 1 || die "failed to set key orders"
+    splinterpctl "${SPL_ARGS[@]}" orders set "$KEY" 1 || die "failed to set key orders"
     splinterpctl "${SPL_ARGS[@]}" type "$KEY" vartext || die "failed to set key slot type"
     splinterpctl "${SPL_ARGS[@]}" type "${KEY}.1" vartext || die "failed to set tandem key slot type"
 else
