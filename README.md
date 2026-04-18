@@ -31,7 +31,8 @@ which can be inspected with `splinterpctl` or `splinter_cli`.
 **Before running:** Read `CLAUDE.md` — it contains the instructions your 
 agent will follow. Treat any instruction file in a cloned repo the same way 
 you'd treat an unfamiliar NPM postinstall script. I've vetted this one, but 
-the habit matters more than the trust.
+the habit matters more than the trust. You should also be sure of everything
+in `spec.md`, as this is what the agent will be building.
 
 ```bash
 ./bigbang.sh        # with LCARS display
@@ -40,6 +41,15 @@ the habit matters more than the trust.
 
 Then tell Claude Code: `Execute the spec in spec.md` after you've started it
 in another terminal and trusted the repository. 
+
+## The Build Artifact
+
+The agent will build a Python script that utilizes splinter to bypass the GIL
+for instant IPC signaling. You'll see it "light up" when the agent signals itself
+using it.
+
+
+The created interface will be in `demo/` once the run completes. 
 
 ## What This Demo Doesn't Cover
 
