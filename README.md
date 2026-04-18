@@ -17,8 +17,8 @@ A Claude Code agent executes a spec, signals its activity at each step via
 Deno/Hono SSE server drives a 63-segment LCARS display that pulses in real
 time as signal groups fire.
 
-After the run, the persistent bus file contains everything the agent wrote —
-inspectable with `splinterpctl`.
+After the run, the persistent bus file contains everything the agent wrote
+which can be inspected with `splinterpctl` or `splinter_cli`.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ in another terminal and trusted the repository.
 
 ## What This Demo Doesn't Cover
 
-Semantic search over agent journals via `splinference` — the embedded
+Semantic search over agent journals via `splinference`: the embedded
 sidecar that runs Nomic Text 1.5 against everything agents write. That's
 the focus of the next article in this series.
 
