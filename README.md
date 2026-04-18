@@ -28,12 +28,18 @@ inspectable with `splinterpctl`.
 
 ## How To Run
 
+**Before running:** Read `CLAUDE.md` — it contains the instructions your 
+agent will follow. Treat any instruction file in a cloned repo the same way 
+you'd treat an unfamiliar NPM postinstall script. I've vetted this one, but 
+the habit matters more than the trust.
+
 ```bash
 ./bigbang.sh        # with LCARS display
 ./littlebang.sh     # without (no Deno required)
 ```
 
-Then tell Claude Code: `Execute the spec in spec.md`
+Then tell Claude Code: `Execute the spec in spec.md` after you've started it
+in another terminal and trusted the repository. 
 
 ## What This Demo Doesn't Cover
 
