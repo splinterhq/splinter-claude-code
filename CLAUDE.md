@@ -14,6 +14,9 @@ When performing the following actions, call `scripts/spl-signal <event>` via bas
 The signal bus is available at $SPLINTER_AGENT_BUS. Governance 
 observes these signals; missing signals degrade observability.
 
+Signal `task_advance` immediately after completing each step, before
+beginning the next. Do not batch signals at the end of a task. 
+
 ## Agent Journaling
 
 Use `scripts/spl-journal` to record intent and outcome at decision points —
@@ -67,3 +70,4 @@ Apply the most specific label that fits:
 scripts/spl-journal "deno-ffi-bigint-overflow.1" "setLabel requires BigInt 
 not Number for mask argument, Deno throws on Number silently" 0x20
 ```
+S
