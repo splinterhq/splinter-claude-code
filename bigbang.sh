@@ -11,34 +11,36 @@ LCARS_PID_FILE=".lcars.pid"
 
 cleanup() {
     echo ""
-    echo "Cleaning up ..."
+    echo "[cleaning up] ..."
     if [ -f "$LCARS_PID_FILE" ]; then
         kill "$(cat $LCARS_PID_FILE)" 2>/dev/null || true
         rm -f "$LCARS_PID_FILE"
     fi
-    echo ""
-    echo "You can remove ${BUS_FILE} when you're ready to."
-    echo "It's preserved in case you want to inspect it with splinter's tools."
-    echo "Done."
 }
 
 # Let the user tear down cleanly with ctrl-c
 trap cleanup EXIT INT TERM
 
-echo ""
-echo "Initializing Splinter bus ..."
-bash scripts/bus-init.sh
+[ -f "${BUS_FILE}" ] || {
+    echo ""
+    echo "Initializing Splinter bus ..."
+    bash scripts/bus-init.sh "${BUS_FILE}"
+}
 
-export SPLINTER_CONN_FN="$BUS_FILE"
+export DEMO_ROOT=$(pwd)
+# the Deno script needs a literal path
+export SPLINTER_CONN_FN="${DEMO_ROOT}/${BUS_FILE}"
+# agents already know where they are
 export SPLINTER_AGENT_BUS="$BUS_FILE"
 
 echo "Starting LCARS server on port ${DEMO_PORT} ..."
-SPLINTER_CONN_FN="$BUS_FILE" deno run -A ts/main.ts &
+deno run -A ts/main.ts &
 LCARS_PID=$!
 echo "$LCARS_PID" > "$LCARS_PID_FILE"
 
 # Give Deno a moment to bind the port
-sleep 2
+echo "Allowing 5 seconds for Deno to start and slower systems to catch up ..."
+sleep 5
 
 
 # Verify it actually came up before telling the user it did
