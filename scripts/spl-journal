@@ -8,7 +8,7 @@
 # Splinter's sidecar embeds both automatically.
 # Optional bloom_mask (hex) categorizes the entry for later search.
 
-STORE="${SPLINTER_AGENT_BUS:-run_artifact.spl}"
+STORE="${SPLINTER_AGENT_BUS}"
 
 KEY="${1}"
 VALUE="${2}"
