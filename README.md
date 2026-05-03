@@ -1,6 +1,8 @@
 # Claude Code + Splinter Signal Demo
 
-Companion repo to: [article URL]
+Companion repo to an article I never published because Claude Code changed
+under the hood so much. The interation worked great, but the tutorial content
+was instantly stale, so I just kept the repo and scrapped the article.
 
 [Splinter][1] is a shared-memory substrate for AI workflows. This demo shows
 how agents can use it as a governance and coordination bus — signaling
